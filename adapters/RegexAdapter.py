@@ -4,8 +4,8 @@ from Adapter import Adapter
 
 
 class RegexAdapter(Adapter):
-    def can_parse(sentence) -> Tuple[bool, float]:
+    def can_parse(self, sentence: str) -> Tuple[bool, float]:
         pass
 
-    def get_response(sentence) -> str:
+    def get_response(self, sentence: str) -> str:
         pass
