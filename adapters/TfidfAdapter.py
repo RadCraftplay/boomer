@@ -54,6 +54,6 @@ class TfidfAdapter(Adapter):
                 best_question_rating = rating
         
         if best_question_rating > self.threshold:
-            return self.conversation[best_question_id]
+            return self.conversation[best_question_id][1]
         else:
             return None
