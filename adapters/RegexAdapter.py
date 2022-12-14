@@ -1,10 +1,8 @@
-
-from ast import Tuple
-from Adapter import Adapter
+from adapters.Adapter import Adapter
 
 
 class RegexAdapter(Adapter):
-    def can_parse(self, sentence: str) -> Tuple[bool, float]:
+    def can_parse(self, sentence: str):
         pass
 
     def get_response(self, sentence: str) -> str:

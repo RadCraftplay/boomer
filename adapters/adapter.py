@@ -1,11 +1,9 @@
-
 from abc import ABC, abstractmethod
-from ast import Tuple
 
 
 class Adapter(ABC):
     @abstractmethod
-    def can_parse(self, sentence: str) -> Tuple[bool, float]:
+    def can_parse(self, sentence: str):
         pass
 
     @abstractmethod
