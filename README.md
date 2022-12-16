@@ -10,7 +10,7 @@ użyciu wyrażeń regularnych.
 
 # TODO:
 - [x] Wektory TF-IDF
-- [ ] Ekstrakcja informacji przy użyciu wyrażeń regularnych
+- [x] Ekstrakcja informacji przy użyciu wyrażeń regularnych
 - [ ] Wprowadzanie głosowe
 - [ ] Input loop
 - [ ] Kontekst oraz zmiana kontekstu przechodząc przez opcje
