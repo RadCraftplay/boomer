@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
+import io
 import json
 import speech_recognition as sr
+from vosk import Model, KaldiRecognizer
 
 class IOProvider(ABC):
     @abstractmethod
@@ -19,18 +21,29 @@ class ConsoleIOProvider(IOProvider):
         print(text)
     
 class SpeechIOProvider(IOProvider):
-    def __init__(self):    	
-        pass
-
     def read(self) -> str:
         r = sr.Recognizer()
         with sr.Microphone() as source:
             print("Say something!")
             audio = r.listen(source)
         
-        result = json.loads(r.recognize_vosk(audio))
-        print(result)
-        return result["text"]
+        model = Model("model")
+        rec = KaldiRecognizer(model, audio.sample_rate)
+
+        b_handle = io.BytesIO()
+        b_handle.write(audio.get_wav_data())
+        b_handle.seek(0)
+        wf = io.BufferedReader(b_handle)
+        
+        while True:
+            data = wf.read(2000)
+            if len(data) == 0:
+                break
+        
+        res = json.loads(rec.FinalResult())
+        print(res)
+
+        return res["text"]
 
     def write(self, text: str):
         print(text)

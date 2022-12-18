@@ -17,7 +17,6 @@ użyciu wyrażeń regularnych.
 - [x] Input loop
 - [x] Wczytywanie komendy dopiero po wypowiedzeniu hasła
 - [x] Wprowadzanie głosowe
-- [ ] Czytanie na głos
 - [ ] Wyszukiwanie semantyczne
 - [ ] Data
 - [ ] Godzina
