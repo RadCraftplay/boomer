@@ -13,6 +13,7 @@ użyciu wyrażeń regularnych.
 - [x] Ekstrakcja informacji przy użyciu wyrażeń regularnych
 - [x] AnyAdapter (przyjmuje ciąg znaków i wywołuje funkcję jako parametr przekazując do niej podany ciąg znaków)
 - [x] Adapter adapterów
+- [x] Input output abstraction
 - [ ] Input loop
 - [ ] Drzewko decyzji
 - [ ] Wyszukiwanie semantyczne
