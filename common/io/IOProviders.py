@@ -11,7 +11,7 @@ class IOProvider(ABC):
 
 class ConsoleIOProvider(IOProvider):
     def read(self) -> str:
-        return input()
+        return input("> ")
 
     def write(self, text: str):
         print(text)
