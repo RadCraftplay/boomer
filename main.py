@@ -1,7 +1,7 @@
 
 from adapters.Adapter import Adapter
 from adapters.AdapterAdapter import AdapterAdapter
-from common.CommonAdapters import get_exit_adapter
+from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
 from common.io.IOProviders import ConsoleIOProvider, IOProvider
 
@@ -12,10 +12,9 @@ config = config_provider.read()
 default_answer: str = config["default_answer"]
 threshold: float = config["threshold"]
 
-adapter : Adapter = AdapterAdapter([
-    get_exit_adapter(threshold)
-])
-
+builder = AdapterBuilder(0.6)
+builder.with_question("exit", exit)
+adapter = builder.get()
 
 while True:
     question = io_provider.read()
