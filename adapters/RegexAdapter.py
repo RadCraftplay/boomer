@@ -4,16 +4,16 @@ from adapters.Adapter import Adapter
 
 class RegexAdapter(Adapter):
     def __init__(self, conversation):
-        self.conversation : dict[str, Callable[[re.Match[str]], Callable[[], str]]] = conversation
+        self.__conversation : dict[str, Callable[[re.Match[str]], Callable[[], str]]] = conversation
 
     def can_parse(self, sentence: str) -> tuple[bool, float]:
-        for regex in self.conversation.keys():
+        for regex in self.__conversation.keys():
             if re.match(regex, sentence) is not None:
                 return True, 1.0
         return False, 0.0
 
     def get_response(self, sentence: str) -> Callable[[], str]:
-        for regex, response_func in self.conversation.items():
+        for regex, response_func in self.__conversation.items():
             match = re.match(regex, sentence)
             if match is not None:
                 resp = response_func(match)

@@ -6,29 +6,29 @@ from adapters.TfidfAdapter import TfidfAdapter
 
 class AdapterAdapterBuilder():
     def __init__(self):
-        self.adapter_adapters : list[AdapterAdapter] = []
-        self.regex_adapters : list[RegexAdapter] = []
-        self.tfidf_adapters : list[TfidfAdapter] = []
+        self.__adapter_adapters : list[AdapterAdapter] = []
+        self.__regex_adapters : list[RegexAdapter] = []
+        self.__tfidf_adapters : list[TfidfAdapter] = []
 
     def get(self):
         adapters : list[Adapter] = []
 
-        for adapter in self.regex_adapters:
+        for adapter in self.__regex_adapters:
             adapters.append(adapter)
         
-        for adapter in self.tfidf_adapters:
+        for adapter in self.__tfidf_adapters:
             adapters.append(adapter)
 
-        for adapter in self.adapter_adapters:
+        for adapter in self.__adapter_adapters:
             adapters.append(adapter)
         
         return AdapterAdapter(adapters)
     
     def with_adapter_adapter(self, adapter_adapter : AdapterAdapter):
-        self.adapter_adapters.append(adapter_adapter)
+        self.__adapter_adapters.append(adapter_adapter)
     
     def with_regex_adapter(self, regex_adapter : RegexAdapter):
-        self.regex_adapters.append(regex_adapter)
+        self.__regex_adapters.append(regex_adapter)
     
     def with_tfidf_adapter(self, tfidf_adapter : TfidfAdapter):
-        self.tfidf_adapters.append(tfidf_adapter)
+        self.__tfidf_adapters.append(tfidf_adapter)
