@@ -5,22 +5,26 @@ from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
 from common.io.IOProviders import ConsoleIOProvider, IOProvider
 
-config_provider : ConfigurationProvider = JsonConfigurationProvider("./config.json")
-io_provider : IOProvider = ConsoleIOProvider()
+def main():
+    config_provider : ConfigurationProvider = JsonConfigurationProvider("./config.json")
+    io_provider : IOProvider = ConsoleIOProvider()
 
-config = config_provider.read()
-default_answer: str = config["default_answer"]
-threshold: float = config["threshold"]
+    config = config_provider.read()
+    default_answer: str = config["default_answer"]
+    threshold: float = config["threshold"]
 
-builder = AdapterBuilder(0.6)
-builder.with_question("exit", exit)
-adapter = builder.get()
+    builder = AdapterBuilder(threshold)
+    builder.with_question("exit", exit)
+    adapter = builder.get()
 
-while True:
-    question = io_provider.read()
-    can_p, rating = adapter.can_parse(question.lower())
-    if (can_p):
-        resp_func = adapter.get_response(question.lower())
-        io_provider.write(resp_func())
-    else:
-        io_provider.write(default_answer)
+    while True:
+        question = io_provider.read().lower()
+        can_p, rating = adapter.can_parse(question)
+        if (can_p):
+            resp_func = adapter.get_response(question)
+            io_provider.write(resp_func())
+        else:
+            io_provider.write(default_answer)
+
+if __name__ == "__main__":
+    main()
