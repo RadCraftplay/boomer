@@ -26,9 +26,12 @@ class AdapterAdapterBuilder():
     
     def with_adapter_adapter(self, adapter_adapter : AdapterAdapter):
         self.__adapter_adapters.append(adapter_adapter)
+        return self
     
     def with_regex_adapter(self, regex_adapter : RegexAdapter):
         self.__regex_adapters.append(regex_adapter)
+        return self
     
     def with_tfidf_adapter(self, tfidf_adapter : TfidfAdapter):
         self.__tfidf_adapters.append(tfidf_adapter)
+        return self
