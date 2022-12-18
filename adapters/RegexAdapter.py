@@ -23,5 +23,5 @@ class RegexAdapter(Adapter):
     
     @staticmethod
     def with_single_response(response_parser: Callable[[re.Match[str]], Callable[[], str]], questions: set[str]):
-        conversation = [{question: response_parser} for question in questions]
+        conversation = {question: response_parser for question in questions}
         return RegexAdapter(conversation)

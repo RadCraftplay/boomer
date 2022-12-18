@@ -61,5 +61,5 @@ class TfidfAdapter(Adapter):
 
     @staticmethod
     def with_single_response(threshold: float, response_parser: Callable[[], str], questions: set[str]):
-        conversation = [{question: response_parser} for question in questions]
+        conversation = [(question, response_parser) for question in questions]
         return TfidfAdapter(conversation, threshold)
