@@ -1,19 +1,20 @@
 from ast import Tuple
 from adapters.Adapter import Adapter
 from adapters.AdapterAdapter import AdapterAdapter
-from adapters.AnyAdapter import AnyAdapter
 from adapters.RegexAdapter import RegexAdapter
 from adapters.TfidfAdapter import TfidfAdapter
+from common.AdapterBuilder import AdapterBuilder
 from sys import exit
 
 def repeatSentence(sentence: str) -> str:
     return "User typed: " + sentence
 
-adapter = AdapterAdapter([
-    RegexAdapter.with_single_response(lambda m: lambda: "Weather in {} is clear".format(m.group(1)), ["weather in (.*)$", "weather (.*)$"]),
-    TfidfAdapter.with_single_response(0.6, lambda: "I like turtles", ["do you like turtles?", "are you wise?", "weather"]),
-    TfidfAdapter([ ("exit", exit) ], 0.6)
-])
+factory = AdapterBuilder(0.6)
+factory.with_regexes_single_answer(["weather in (.*)$", "weather (.*)$"], lambda m: lambda: "Weather in {} is clear".format(m.group(1)))
+factory.with_questions_single_answer(["do you like turtles?", "are you wise?", "weather"], lambda: "I like turtles")
+factory.with_question("exit", exit)
+
+adapter = factory.get()
 def_ans = "Sorry, I don't understand"
 
 while True:

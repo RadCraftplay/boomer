@@ -6,13 +6,13 @@ from adapters.Adapter import Adapter
 class AdapterAdapter(Adapter):
 
     def __init__(self, adapters: list[Adapter]):
-        self.__adapters = adapters
+        self.adapters = adapters
 
     def can_parse(self, sentence: str) -> tuple[bool, float]:
         can_p = False
         max_surtenty = 0.0
 
-        for adapter in self.__adapters:
+        for adapter in self.adapters:
             can_p_cur, surtenty = adapter.can_parse(sentence)
             if can_p_cur:
                 if max_surtenty < surtenty:
@@ -26,7 +26,7 @@ class AdapterAdapter(Adapter):
         used_adapter = None
         max_surtenty = 0.0
 
-        for adapter in self.__adapters:
+        for adapter in self.adapters:
             can_p_cur, surtenty = adapter.can_parse(sentence)
             if can_p_cur:
                 if max_surtenty < surtenty:
