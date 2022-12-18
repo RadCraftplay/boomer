@@ -15,6 +15,9 @@ użyciu wyrażeń regularnych.
 - [x] Adapter adapterów
 - [x] Input output abstraction
 - [X] Input loop
-- [ ] Drzewko decyzji
+- [ ] Wczytywanie komendy dopiero po wypowiedzeniu hasła
 - [ ] Wyszukiwanie semantyczne
 - [ ] Wprowadzanie głosowe
+- [ ] Data
+- [ ] Godzina
+- [ ] Pogoda

@@ -1,4 +1,5 @@
 {
     "default_answer": "Sorry, I don't understand",
-    "threshold": 0.6
+    "threshold": 0.6,
+    "wakeup_sentence": "wake up sleepy joe"
 }
