@@ -2,13 +2,9 @@ import re
 from typing import Callable
 from adapters.Adapter import Adapter
 
-def fun() -> str:
-    return ""
-
 class RegexAdapter(Adapter):
     def __init__(self, conversation):
         self.conversation : dict[str, Callable[[re.Match[str]], Callable[[], str]]] = conversation
-        test = fun
 
     def can_parse(self, sentence: str) -> tuple[bool, float]:
         for regex in self.conversation.keys():
