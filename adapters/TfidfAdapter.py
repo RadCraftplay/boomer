@@ -58,3 +58,8 @@ class TfidfAdapter(Adapter):
             return self.conversation[best_question_id][1]
         else:
             return lambda: "Error: Trying to process a statement, that can not be processed!"
+
+    @staticmethod
+    def with_single_response(threshold: float, response_parser: Callable[[], str], questions: set[str]):
+        conversation = [{question: response_parser} for question in questions]
+        return TfidfAdapter(conversation, threshold)

@@ -20,3 +20,8 @@ class RegexAdapter(Adapter):
                 return resp
 
         return lambda: "Error: Trying to process a statement, that can not be processed!"
+    
+    @staticmethod
+    def with_single_response(response_parser: Callable[[re.Match[str]], Callable[[], str]], questions: set[str]):
+        conversation = [{question: response_parser} for question in questions]
+        return RegexAdapter(conversation)
