@@ -11,8 +11,10 @@ użyciu wyrażeń regularnych.
 # TODO:
 - [x] Wektory TF-IDF
 - [x] Ekstrakcja informacji przy użyciu wyrażeń regularnych
-- [ ] Wprowadzanie głosowe
+- [ ] AnyAdapter (przyjmuje ciąg znaków i wywołuje funkcję jako parametr przekazując do niej podany ciąg znaków)
+- [ ] Adapter adapterów i jego builder
 - [ ] Input loop
 - [ ] Kontekst oraz zmiana kontekstu przechodząc przez opcje
 - [ ] Drzewko decyzji
 - [ ] Wyszukiwanie semantyczne
+- [ ] Wprowadzanie głosowe
