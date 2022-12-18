@@ -1,9 +1,14 @@
 import re
+from typing import Callable
 from adapters.Adapter import Adapter
+
+def fun() -> str:
+    return ""
 
 class RegexAdapter(Adapter):
     def __init__(self, conversation):
-        self.conversation = conversation
+        self.conversation : dict[str, Callable[[re.Match[str]], Callable[[], str]]] = conversation
+        test = fun
 
     def can_parse(self, sentence: str) -> tuple[bool, float]:
         for regex in self.conversation.keys():
@@ -11,10 +16,11 @@ class RegexAdapter(Adapter):
                 return True, 1.0
         return False, 0.0
 
-    def get_response(self, sentence: str) -> str:
+    def get_response(self, sentence: str) -> Callable[[], str]:
         for regex, response_func in self.conversation.items():
             match = re.match(regex, sentence)
             if match is not None:
-                return response_func(match)
+                resp = response_func(match)
+                return resp
 
-        assert "Trying to process a statement, that can not be processed!"
+        return lambda: "Error: Trying to process a statement, that can not be processed!"
