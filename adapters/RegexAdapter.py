@@ -3,7 +3,7 @@ from typing import Callable
 from adapters.Adapter import Adapter
 
 class RegexAdapter(Adapter):
-    def __init__(self, conversation):
+    def __init__(self, conversation: dict[str, Callable[[re.Match[str]], Callable[[], str]]]):
         self.__conversation : dict[str, Callable[[re.Match[str]], Callable[[], str]]] = conversation
 
     def can_parse(self, sentence: str) -> tuple[bool, float]:

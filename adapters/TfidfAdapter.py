@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from utils.MathUtils import cos_sim
 
 class TfidfAdapter(Adapter):
-    def __init__(self, conversation, threshold) -> None:
+    def __init__(self, conversation: list[tuple[str, Callable[[], str]]], threshold: float) -> None:
         self.__conversation: list[tuple[str, Callable[[], str]]] = conversation
         self.__threshold: float = threshold
 
