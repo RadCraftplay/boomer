@@ -24,6 +24,11 @@ def main():
 
     builder = AdapterBuilder(threshold)
     builder.with_question("exit", exit)
+    builder.with_questions([
+        ("hi", lambda: "hello"),
+        ("hello", lambda: "hi"),
+        ("what is your name", lambda: "my name is sleepy joe")
+    ])
     builder.with_questions_single_answer([
         "time",
         "what time is it",
