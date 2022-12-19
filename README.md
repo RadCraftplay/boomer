@@ -20,4 +20,4 @@ użyciu wyrażeń regularnych.
 - [x] Pogoda
 - [ ] Wyszukiwanie semantyczne w plikach
 - [x] Czytanie odpowiedzi przy użyciu syntezatora
-- [ ] Wprowadzanie głosowe
+- [x] Wprowadzanie głosowe
