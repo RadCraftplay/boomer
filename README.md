@@ -18,6 +18,6 @@ użyciu wyrażeń regularnych.
 - [x] Data
 - [x] Godzina
 - [x] Pogoda
-- [ ] Wyszukiwanie semantyczne w plikach
+- [x] Wyszukiwanie semantyczne w plikach
 - [x] Czytanie odpowiedzi przy użyciu syntezatora
 - [x] Wprowadzanie głosowe
