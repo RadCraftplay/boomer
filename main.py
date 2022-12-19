@@ -5,18 +5,34 @@ from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
 from common.io.IOProviders import ConsoleIOProvider, IOProvider, SpeechIOProvider
 
+from datetime import datetime, date
+
 def main():
     config_provider : ConfigurationProvider = JsonConfigurationProvider("./config.json")
-    io_provider : IOProvider = SpeechIOProvider()
+    io_provider : IOProvider = ConsoleIOProvider()
 
     config = config_provider.read()
     default_answer: str = config["default_answer"]
     wakeup_sentence: str = config["wakeup_sentence"]
     threshold: float = config["threshold"]
 
+
+
     builder = AdapterBuilder(threshold)
     builder.with_question("exit", exit)
+    builder.with_questions_single_answer([
+        "time",
+        "what time is it",
+        "current time"
+    ], lambda: "The current time is {}".format(datetime.now().strftime("%H:%M")))
+    builder.with_questions_single_answer([
+        "date",
+        "what day is today"
+        "today's date"
+    ], lambda: "Today is {}".format(datetime.now().strftime("%A, %B %d %Y")))
     adapter = builder.get()
+
+
 
     while True:
         while io_provider.read().lower() != wakeup_sentence:
