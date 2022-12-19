@@ -5,8 +5,6 @@ from ast import Tuple
 from adapters.Adapter import Adapter
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from utils.MathUtils import cos_sim
-
 class TfidfAdapter(Adapter):
     def __init__(self, conversation: list[tuple[str, Callable[[], str]]], threshold: float) -> None:
         self.__conversation: list[tuple[str, Callable[[], str]]] = conversation
@@ -20,6 +18,15 @@ class TfidfAdapter(Adapter):
         self.__corpus = corpus
         self.__vectorizer = TfidfVectorizer(stop_words=stopwords)
         self.__vectoriced_document = self.__vectorizer.fit_transform(corpus)
+    
+    @staticmethod
+    def cos_sim(v1, v2):
+        denominator = (np.linalg.norm(v1)*np.linalg.norm(v2))
+        if denominator == 0:
+            return 0.0
+        else:
+            costheta = np.dot(v1, v2)/(np.linalg.norm(v1)*np.linalg.norm(v2))
+            return costheta
 
     def can_parse(self, sentence: str):
         # TF-IDF for query
@@ -31,7 +38,7 @@ class TfidfAdapter(Adapter):
         # make cos similarity
         best_question_rating = 0.0
         for i in range(len(self.__corpus)):
-            rating = cos_sim(Q_vec, X_vec[i])
+            rating = TfidfAdapter.cos_sim(Q_vec, X_vec[i])
             if rating > best_question_rating:
                 best_question_rating = rating
         
@@ -49,7 +56,7 @@ class TfidfAdapter(Adapter):
         best_question_id = -1
         best_question_rating = 0.0
         for i in range(len(self.__corpus)):
-            rating = cos_sim(Q_vec, X_vec[i])
+            rating = TfidfAdapter.cos_sim(Q_vec, X_vec[i])
             if rating > best_question_rating:
                 best_question_id = i
                 best_question_rating = rating
