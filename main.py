@@ -3,6 +3,7 @@ from adapters.Adapter import Adapter
 from adapters.AdapterAdapter import AdapterAdapter
 from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
+from common.WeatherProvider import WeatherProvider
 from common.io.IOProviders import ConsoleIOProvider, IOProvider, SpeechIOProvider
 
 from datetime import datetime, date
@@ -16,6 +17,8 @@ def main():
     use_wakeup_sentence: bool = config["use_wakeup_sentence"]
     wakeup_sentence: str = config["wakeup_sentence"]
     threshold: float = config["threshold"]
+
+    weather_provider = WeatherProvider(config["weather"])
 
 
 
@@ -31,6 +34,17 @@ def main():
         "what day is today"
         "today's date"
     ], lambda: "Today is {}".format(datetime.now().strftime("%A, %B %d %Y")))
+    builder.with_regexes_single_answer([
+        "weather in (.*)$",
+        "weather (.*)$",
+        "today's weather in (.*)$",
+        "what's the weather like today in (.*)$"
+        "weather today in (.*)$"
+    ], weather_provider.get_current_weather_from_match)
+    builder.with_question(
+        "weather",
+        weather_provider.get_current_weather_in_city("Cracow")
+    )
     adapter = builder.get()
 
 

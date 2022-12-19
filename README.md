@@ -11,13 +11,13 @@ użyciu wyrażeń regularnych.
 # TODO:
 - [x] Wektory TF-IDF
 - [x] Ekstrakcja informacji przy użyciu wyrażeń regularnych
-- [x] AnyAdapter (przyjmuje ciąg znaków i wywołuje funkcję jako parametr przekazując do niej podany ciąg znaków)
 - [x] Adapter adapterów
 - [x] Input output abstraction
 - [x] Input loop
 - [x] Wczytywanie komendy dopiero po wypowiedzeniu hasła
-- [x] Wprowadzanie głosowe
-- [ ] Wyszukiwanie semantyczne
-- [ ] Data
-- [ ] Godzina
-- [ ] Pogoda
+- [x] Data
+- [x] Godzina
+- [x] Pogoda
+- [ ] Wyszukiwanie semantyczne w plikach
+- [ ] Czytanie odpowiedzi przy użyciu syntezatora
+- [ ] Wprowadzanie głosowe
