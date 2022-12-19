@@ -13,6 +13,7 @@ def main():
 
     config = config_provider.read()
     default_answer: str = config["default_answer"]
+    use_wakeup_sentence: bool = config["use_wakeup_sentence"]
     wakeup_sentence: str = config["wakeup_sentence"]
     threshold: float = config["threshold"]
 
@@ -35,9 +36,10 @@ def main():
 
 
     while True:
-        while io_provider.read().lower() != wakeup_sentence:
-            pass
-        io_provider.write("What do you want me to do?")
+        if use_wakeup_sentence:
+            while io_provider.read().lower() != wakeup_sentence:
+                pass
+            io_provider.write("What do you want me to do?")
         
         question = io_provider.read().lower()
         can_p, _ = adapter.can_parse(question)
