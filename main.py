@@ -4,13 +4,13 @@ from adapters.AdapterAdapter import AdapterAdapter
 from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
 from common.WeatherProvider import WeatherProvider
-from common.io.IOProviders import ConsoleIOProvider, IOProvider, SpeechIOProvider
+from common.io.IOProviders import ConsoleIOProvider, IOProvider, SpeakingIOProvider
 
 from datetime import datetime, date
 
 def main():
     config_provider : ConfigurationProvider = JsonConfigurationProvider("./config.json")
-    io_provider : IOProvider = ConsoleIOProvider()
+    io_provider : IOProvider = SpeakingIOProvider()
 
     config = config_provider.read()
     default_answer: str = config["default_answer"]

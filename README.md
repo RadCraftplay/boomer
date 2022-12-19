@@ -19,5 +19,5 @@ użyciu wyrażeń regularnych.
 - [x] Godzina
 - [x] Pogoda
 - [ ] Wyszukiwanie semantyczne w plikach
-- [ ] Czytanie odpowiedzi przy użyciu syntezatora
+- [x] Czytanie odpowiedzi przy użyciu syntezatora
 - [ ] Wprowadzanie głosowe
