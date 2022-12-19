@@ -22,7 +22,7 @@ class ConsoleIOProvider(IOProvider):
     def write(self, text: str):
         print(text)
 
-class SpeakingIOProvider(IOProvider):
+class SpeechIOProvider(IOProvider):
     def __init__(self):
         def set_voice(engine : pyttsx3.Engine, language: str):
             for voice in engine.getProperty('voices'):
