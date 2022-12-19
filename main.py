@@ -3,6 +3,7 @@ from adapters.Adapter import Adapter
 from adapters.AdapterAdapter import AdapterAdapter
 from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
+from common.SemanticSearch import SemanticSearch
 from common.WeatherProvider import WeatherProvider
 from common.io.IOProviders import ConsoleIOProvider, IOProvider, SpeechIOProvider
 
@@ -19,6 +20,7 @@ def main():
     use_console_io: bool = config["use_console_io"]
 
     weather_provider = WeatherProvider(config["weather"])
+    semantic_search = SemanticSearch(config["search_directory"])
 
     io_provider : IOProvider | None = None
     if use_console_io:
@@ -56,9 +58,13 @@ def main():
         "weather",
         weather_provider.get_current_weather_in_city(config["weather"]["default_city"])
     )
+    builder.with_regex(
+        "search (.*)$",
+        semantic_search.performQuery
+    )
     adapter = builder.get()
 
-
+    print("Ready!")
 
     while True:
         if use_wakeup_sentence:
