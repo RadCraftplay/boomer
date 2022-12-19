@@ -31,5 +31,5 @@ class WeatherProvider():
         additional_weather_info = resp_json["weather"]
         weather_description = additional_weather_info[0]["description"]
 
-        return lambda: str.format("Currently in {} the weather is: {}. The temperature is {} Celsius (feels like {} Celsius). The atmospheric pressure is {}hPa, and the humidity is {}%.",
+        return lambda: str.format("Currently in {} the weather is {}. The temperature is {} Celsius (feels like {} Celsius). The atmospheric pressure is {}hPa, and the humidity is {}%.",
             city_name, weather_description, current_temperature, feels_like_temperature, current_pressure, current_humidity)
