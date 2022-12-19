@@ -10,15 +10,21 @@ from datetime import datetime, date
 
 def main():
     config_provider : ConfigurationProvider = JsonConfigurationProvider("./config.json")
-    io_provider : IOProvider = SpeechIOProvider()
 
     config = config_provider.read()
     default_answer: str = config["default_answer"]
     use_wakeup_sentence: bool = config["use_wakeup_sentence"]
     wakeup_sentence: str = config["wakeup_sentence"]
     threshold: float = config["threshold"]
+    use_console_io: bool = config["use_console_io"]
 
     weather_provider = WeatherProvider(config["weather"])
+
+    io_provider : IOProvider | None = None
+    if use_console_io:
+        io_provider = ConsoleIOProvider()
+    else:
+        io_provider = SpeechIOProvider()
 
 
 
@@ -48,7 +54,7 @@ def main():
     ], weather_provider.get_current_weather_from_match)
     builder.with_question(
         "weather",
-        weather_provider.get_current_weather_in_city("Cracow")
+        weather_provider.get_current_weather_in_city(config["weather"]["default_city"])
     )
     adapter = builder.get()
 
