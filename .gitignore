@@ -162,5 +162,11 @@ cython_debug/
 # Visual Studio Code
 .vscode/
 
-# Vosk model
-model/
+# Configuration
+config.json
+
+# Test scripts
+tests/
+
+# Library
+library/
