@@ -33,8 +33,8 @@ def main():
     builder = AdapterBuilder(threshold)
     builder.with_question("exit", exit)
     builder.with_questions([
-        ("hi", lambda: "hello"),
-        ("hello", lambda: "hi"),
+        ("hi", lambda: "Hello!"),
+        ("hello", lambda: "Hi!"),
         ("what is your name", lambda: "My name is boomer")
     ])
     builder.with_questions_single_answer([
