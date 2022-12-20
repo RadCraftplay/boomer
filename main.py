@@ -35,7 +35,7 @@ def main():
     builder.with_questions([
         ("hi", lambda: "hello"),
         ("hello", lambda: "hi"),
-        ("what is your name", lambda: "my name is sleepy joe")
+        ("what is your name", lambda: "My name is boomer")
     ])
     builder.with_questions_single_answer([
         "time",
