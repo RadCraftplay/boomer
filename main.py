@@ -1,6 +1,4 @@
 
-from adapters.Adapter import Adapter
-from adapters.AdapterAdapter import AdapterAdapter
 from common.AdapterBuilder import AdapterBuilder
 from common.Configuration import ConfigurationProvider, JsonConfigurationProvider
 from common.SemanticSearch import SemanticSearch
