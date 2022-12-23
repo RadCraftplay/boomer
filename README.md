@@ -3,7 +3,7 @@
 ## Requirements
 
 - Windows (Linux will probably work if you modify ```SpeechProvider.__init__().set_voice``` function to detect language correctly. Had to implement it that way to set language on Windows 11)
-- Python (>=3.9 should work fine, unsure about the older versions due to multiple dependencies)
+- Python (>=3.9 should work fine, the older versions might not work due to multiple dependencies)
 
 ## Quick start
 
