@@ -55,7 +55,13 @@ $ pip install -r requirements.txt
     - **default_city**: City used if user does not provide any when asking for weather
 - **search_directory**: Directory containing the files searched using "search" command
 
-4. Start assistant
+4. Download stop words used by nltk
+
+```console
+$ python setup.py
+```
+
+5. Start assistant
 
 ```console
 $ python main.py
